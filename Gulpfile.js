@@ -41,7 +41,7 @@ gulp.task('validate-js', function () {
         .pipe(jshint.reporter('jshint-stylish'));
 });
 
-gulp.task('js', ['validate-js'], function () {
+gulp.task('js', function () {
     var files = filesExist([].concat(js_top_file, js_files, js_bottom_file));
     return gulp.src(files)
         .pipe(concat('SocialCalc.js'))
@@ -55,4 +55,4 @@ gulp.task('css', function () {
         .pipe(gulp.dest(dist_folder));
 });
 
-gulp.task('default', ['js', 'css'], function () {});
+gulp.task('default', gulp.series(gulp.parallel('js', 'css')), function () {});
