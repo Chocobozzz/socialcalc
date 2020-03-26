@@ -13,9 +13,10 @@ if('undefined' === typeof document) {
 }
 
 // Compatibility with webworker-threads
-if (typeof self !== 'undefined' && self.thread) {
+if (typeof self !== 'undefined' && self.onmessage) {
+    window = {}
     window.setTimeout = function (cb, ms) {
-        if (ms <= 1) { self.thread.nextTick(cb); }
+        if (ms <= 1) { self.nextTick(cb); }
     };
     window.clearTimeout = function () {};
 }

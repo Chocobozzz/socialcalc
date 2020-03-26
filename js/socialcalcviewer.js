@@ -16,22 +16,22 @@ LEGAL NOTICES REQUIRED BY THE COMMON PUBLIC ATTRIBUTION LICENSE:
 
 EXHIBIT A. Common Public Attribution License Version 1.0.
 
-The contents of this file are subject to the Common Public Attribution License Version 1.0 (the 
-"License"); you may not use this file except in compliance with the License. You may obtain a copy 
-of the License at http://socialcalc.org. The License is based on the Mozilla Public License Version 1.1 but 
-Sections 14 and 15 have been added to cover use of software over a computer network and provide for 
-limited attribution for the Original Developer. In addition, Exhibit A has been modified to be 
+The contents of this file are subject to the Common Public Attribution License Version 1.0 (the
+"License"); you may not use this file except in compliance with the License. You may obtain a copy
+of the License at http://socialcalc.org. The License is based on the Mozilla Public License Version 1.1 but
+Sections 14 and 15 have been added to cover use of software over a computer network and provide for
+limited attribution for the Original Developer. In addition, Exhibit A has been modified to be
 consistent with Exhibit B.
 
-Software distributed under the License is distributed on an "AS IS" basis, WITHOUT WARRANTY OF ANY 
-KIND, either express or implied. See the License for the specific language governing rights and 
+Software distributed under the License is distributed on an "AS IS" basis, WITHOUT WARRANTY OF ANY
+KIND, either express or implied. See the License for the specific language governing rights and
 limitations under the License.
 
 The Original Code is SocialCalc JavaScript SpreadsheetViewer.
 
 The Original Developer is the Initial Developer.
 
-The Initial Developer of the Original Code is Socialtext, Inc. All portions of the code written by 
+The Initial Developer of the Original Code is Socialtext, Inc. All portions of the code written by
 Socialtext, Inc., are Copyright (c) Socialtext, Inc. All Rights Reserved.
 
 Contributor: Dan Bricklin.
@@ -40,7 +40,7 @@ Contributor: Dan Bricklin.
 EXHIBIT B. Attribution Information
 
 When the SpreadsheetViewer is producing and/or controlling the display the Graphic Image must be
-displayed on the screen visible to the user in a manner comparable to that in the 
+displayed on the screen visible to the user in a manner comparable to that in the
 Original Code. The Attribution Phrase must be displayed as a "tooltip" or "hover-text" for
 that image. The image must be linked to the Attribution URL so as to access that page
 when clicked. If the user interface includes a prominent "about" display which includes
@@ -61,8 +61,8 @@ Graphic Image: The contents of the sc-logo.gif file in the Original Code or
 a suitable replacement from http://www.socialcalc.org/licenses specified as
 being for SocialCalc.
 
-Display of Attribution Information is required in Larger Works which are defined 
-in the CPAL as a work which combines Covered Code or portions thereof with code 
+Display of Attribution Information is required in Larger Works which are defined
+in the CPAL as a work which combines Covered Code or portions thereof with code
 not governed by the terms of the CPAL.
 
 */
@@ -149,17 +149,17 @@ SocialCalc.SpreadsheetViewer = function(idPrefix) {
    // eddy SpreadsheetViewer {
    if(SocialCalc._app == true || SocialCalc._view == true) scc.defaultImagePrefix = this.imagePrefix = "../"+ this.imagePrefix;
    if(SocialCalc._app == true) {
-     this.context.showGrid= false; 
+     this.context.showGrid= false;
      this.context.showRCHeaders= false;
      this.context.highlightTypes.range.style = ""; // no cell highlighting in app mode
-     
+
      // Loading Message - add to cell A1 - shows when app is loading a large sheet or from a slow server
      this.context.sheetobj.cells["A1"] = new SocialCalc.Cell("A1");
      this.context.sheetobj.cells["A1"].displaystring = "Loading ... "; // will display until recalc issues a render request - auto reset by recalc on load
-     
+
    } else {
-     this.context.showGrid= true; 
-     this.context.showRCHeaders= true;     
+     this.context.showGrid= true;
+     this.context.showRCHeaders= true;
    }
    // } SpreadsheetViewer
    this.editor = new SocialCalc.TableEditor(this.context);
@@ -193,7 +193,7 @@ SocialCalc.SpreadsheetViewer.prototype.InitializeSpreadsheetViewer =
 SocialCalc.SpreadsheetViewer.prototype.LoadSave = function(str) {return SocialCalc.SpreadsheetViewerLoadSave(this, str);};
 SocialCalc.SpreadsheetViewer.prototype.DoOnResize = function() {return SocialCalc.DoOnResize(this);};
 SocialCalc.SpreadsheetViewer.prototype.SizeSSDiv = function() {return SocialCalc.SizeSSDiv(this);};
-SocialCalc.SpreadsheetViewer.prototype.DecodeSpreadsheetSave = 
+SocialCalc.SpreadsheetViewer.prototype.DecodeSpreadsheetSave =
    function(str) {return SocialCalc.SpreadsheetViewerDecodeSpreadsheetSave(this, str);};
 
 // Sheet Methods to make things a little easier:
@@ -279,7 +279,7 @@ SocialCalc.InitializeSpreadsheetViewer = function(spreadsheet, node, height, wid
      // setup app viewer object
      SocialCalc.CurrentSpreadsheetViewerObject = spreadsheet;
    }
-   
+
    // done - refresh screen needed
 
    return;
@@ -314,7 +314,7 @@ SocialCalc.SpreadsheetViewerLoadSave = function(spreadsheet, savestr) {
             spreadsheet.repeatingMacroCommands = rmstr.substring(pos+1);
             if (t2 > 0) { // zero means don't start yet
                spreadsheet.repeatingMacroTimer = window.setTimeout(SocialCalc.SpreadsheetViewerDoRepeatingMacro, spreadsheet.repeatingMacroInterval * 1000);
-               }	
+               }
             }
          }
       }
@@ -393,7 +393,7 @@ SocialCalc.SpreadsheetViewerDoButtonCmd = function(e, buttoninfo, bobj) {
       }
 
    if (obj && obj.blur) obj.blur();
-   SocialCalc.KeyboardFocus();   
+   SocialCalc.KeyboardFocus();
 
    }
 
@@ -619,10 +619,10 @@ SocialCalc.SpreadsheetViewerCreateSheetHTML = function(spreadsheet) {
    div = document.createElement("div");
    ele = context.RenderSheet(null, {type: "html"});
    div.appendChild(ele);
-   delete context;
+   context = undefined;
    result = div.innerHTML;
-   delete ele;
-   delete div;
+   ele = undefined;
+   div = undefined;
    return result;
 
    }

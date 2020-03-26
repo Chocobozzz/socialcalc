@@ -4593,6 +4593,8 @@ SocialCalc.CalculateCellSkipData = function(context) {
 
    // Calculate cellskip data
 
+  if (sheetobj.attribs.lastrow > 10000) return;
+
    for (row=1; row<=sheetobj.attribs.lastrow; row++) {
       for (col=1; col<=sheetobj.attribs.lastcol; col++) { // look for spans and set cellskip for skipped cells
          coord=SocialCalc.crToCoord(col, row);
@@ -6269,11 +6271,11 @@ SocialCalc.ConvertSaveToOtherFormat = function(savestr, outputformat, dorecalc) 
       div = document.createElement("div");
       ele = context.RenderSheet(null, context.defaultHTMLlinkstyle);
       div.appendChild(ele);
-      delete context;
-      delete sheet;
+      context = undefined;
+      sheet = undefined;
       result = div.innerHTML;
-      delete ele;
-      delete div;
+      ele = undefined;
+      div = undefined;
       return result;
       }
 

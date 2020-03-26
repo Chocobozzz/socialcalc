@@ -16,22 +16,22 @@ LEGAL NOTICES REQUIRED BY THE COMMON PUBLIC ATTRIBUTION LICENSE:
 
 EXHIBIT A. Common Public Attribution License Version 1.0.
 
-The contents of this file are subject to the Common Public Attribution License Version 1.0 (the 
-"License"); you may not use this file except in compliance with the License. You may obtain a copy 
-of the License at http://socialcalc.org. The License is based on the Mozilla Public License Version 1.1 but 
-Sections 14 and 15 have been added to cover use of software over a computer network and provide for 
-limited attribution for the Original Developer. In addition, Exhibit A has been modified to be 
+The contents of this file are subject to the Common Public Attribution License Version 1.0 (the
+"License"); you may not use this file except in compliance with the License. You may obtain a copy
+of the License at http://socialcalc.org. The License is based on the Mozilla Public License Version 1.1 but
+Sections 14 and 15 have been added to cover use of software over a computer network and provide for
+limited attribution for the Original Developer. In addition, Exhibit A has been modified to be
 consistent with Exhibit B.
 
-Software distributed under the License is distributed on an "AS IS" basis, WITHOUT WARRANTY OF ANY 
-KIND, either express or implied. See the License for the specific language governing rights and 
+Software distributed under the License is distributed on an "AS IS" basis, WITHOUT WARRANTY OF ANY
+KIND, either express or implied. See the License for the specific language governing rights and
 limitations under the License.
 
 The Original Code is SocialCalc JavaScript SpreadsheetControl.
 
 The Original Developer is the Initial Developer.
 
-The Initial Developer of the Original Code is Socialtext, Inc. All portions of the code written by 
+The Initial Developer of the Original Code is Socialtext, Inc. All portions of the code written by
 Socialtext, Inc., are Copyright (c) Socialtext, Inc. All Rights Reserved.
 
 Contributor: Dan Bricklin.
@@ -40,7 +40,7 @@ Contributor: Dan Bricklin.
 EXHIBIT B. Attribution Information
 
 When the SpreadsheetControl is producing and/or controlling the display the Graphic Image must be
-displayed on the screen visible to the user in a manner comparable to that in the 
+displayed on the screen visible to the user in a manner comparable to that in the
 Original Code. The Attribution Phrase must be displayed as a "tooltip" or "hover-text" for
 that image. The image must be linked to the Attribution URL so as to access that page
 when clicked. If the user interface includes a prominent "about" display which includes
@@ -61,8 +61,8 @@ Graphic Image: The contents of the sc-logo.gif file in the Original Code or
 a suitable replacement from http://www.socialcalc.org/licenses specified as
 being for SocialCalc.
 
-Display of Attribution Information is required in Larger Works which are defined 
-in the CPAL as a work which combines Covered Code or portions thereof with code 
+Display of Attribution Information is required in Larger Works which are defined
+in the CPAL as a work which combines Covered Code or portions thereof with code
 not governed by the terms of the CPAL.
 
 */
@@ -200,9 +200,9 @@ SocialCalc.SpreadsheetControl = function(idPrefix) {
    // Initialization Code:
 
    // eddy Initialization {
-   if(typeof SocialCalc.debug_log === 'undefined') SocialCalc.debug_log = [];   
-   // }   
-   
+   if(typeof SocialCalc.debug_log === 'undefined') SocialCalc.debug_log = [];
+   // }
+
    this.sheet = new SocialCalc.Sheet();
    this.context = new SocialCalc.RenderContext(this.sheet);
    this.context.showGrid=true;
@@ -242,12 +242,12 @@ SocialCalc.SpreadsheetControl = function(idPrefix) {
       sum: {image: "autosum.png", tooltip: "Auto Sum",
                          command: SocialCalc.SpreadsheetControl.DoSum}
       }
-   
+
    // find buttons
    this.findbuttons = {
        last: {image: 'upsearch.png', tooltip: 'Find Previous',
               command: SocialCalc.SpreadsheetControl.SearchUp},
-       next: {image: 'downsearch.png', tooltip: 'Find Next', 
+       next: {image: 'downsearch.png', tooltip: 'Find Next',
               command: SocialCalc.SpreadsheetControl.SearchDown}
    }
 
@@ -770,10 +770,10 @@ SocialCalc.SpreadsheetControl = function(idPrefix) {
                   str += SocialCalc.special_chars(stack[i].command[j]) + "<br>";
                   }
                }
-			// --------------------------------------------   
+			// --------------------------------------------
  		    // eddy log {
 
-			// --------------------------------------------   
+			// --------------------------------------------
 			var ObjToSource = function(o){
 				if (typeof(o) == "string") return o;
 				if (!o) return 'null';
@@ -795,17 +795,17 @@ SocialCalc.SpreadsheetControl = function(idPrefix) {
 				if (na) return "{"+str.slice(0,-1)+"}";
 				else return "["+str.slice(0,-1)+"]";
 			}
-			
-			// --------------------------------------------   
-			
+
+			// --------------------------------------------
+
 		    if(typeof SocialCalc.debug_log != 'undefined') {
-				for(var index in SocialCalc.debug_log) { 
+				for(var index in SocialCalc.debug_log) {
 					str += ObjToSource(SocialCalc.debug_log[index]) + "<br>";
 				}
 			}
-		    // }   
-			// --------------------------------------------   
-			   
+		    // }
+			// --------------------------------------------
+
             s.views.audit.element.innerHTML = str+"</td></tr></table>";
             SocialCalc.CmdGotFocus(true);
             },
@@ -906,24 +906,24 @@ SocialCalc.SpreadsheetControl = function(idPrefix) {
 
    }
 
-   
+
 // Methods:
 
 SocialCalc.SpreadsheetControl.prototype.InitializeSpreadsheetControl =
    function(node, height, width, spacebelow) {return SocialCalc.InitializeSpreadsheetControl(this, node, height, width, spacebelow);};
 SocialCalc.SpreadsheetControl.prototype.DoOnResize = function() {return SocialCalc.DoOnResize(this);};
 SocialCalc.SpreadsheetControl.prototype.SizeSSDiv = function() {return SocialCalc.SizeSSDiv(this);};
-SocialCalc.SpreadsheetControl.prototype.ExecuteCommand = 
+SocialCalc.SpreadsheetControl.prototype.ExecuteCommand =
    function(combostr, sstr) {return SocialCalc.SpreadsheetControlExecuteCommand(this, combostr, sstr);};
-SocialCalc.SpreadsheetControl.prototype.CreateSheetHTML = 
+SocialCalc.SpreadsheetControl.prototype.CreateSheetHTML =
    function() {return SocialCalc.SpreadsheetControlCreateSheetHTML(this);};
-SocialCalc.SpreadsheetControl.prototype.CreateSpreadsheetSave = 
+SocialCalc.SpreadsheetControl.prototype.CreateSpreadsheetSave =
    function(otherparts) {return SocialCalc.SpreadsheetControlCreateSpreadsheetSave(this, otherparts);};
-SocialCalc.SpreadsheetControl.prototype.DecodeSpreadsheetSave = 
+SocialCalc.SpreadsheetControl.prototype.DecodeSpreadsheetSave =
    function(str) {return SocialCalc.SpreadsheetControlDecodeSpreadsheetSave(this, str);};
-SocialCalc.SpreadsheetControl.prototype.CreateCellHTML = 
+SocialCalc.SpreadsheetControl.prototype.CreateCellHTML =
    function(coord) {return SocialCalc.SpreadsheetControlCreateCellHTML(this, coord);};
-SocialCalc.SpreadsheetControl.prototype.CreateCellHTMLSave = 
+SocialCalc.SpreadsheetControl.prototype.CreateCellHTMLSave =
    function(range) {return SocialCalc.SpreadsheetControlCreateCellHTMLSave(this, range);};
 
 
@@ -1060,7 +1060,7 @@ spreadsheet.Buttons = {
       SocialCalc.ButtonRegister(spreadsheet.editor, bele,
          {normalstyle: "border:1px solid "+scc.ISCButtonBorderNormal+";background-color:"+scc.ISCButtonNormalBackground+";",
           hoverstyle: "border:1px solid "+scc.ISCButtonBorderHover+";background-color:"+scc.ISCButtonHoverBackground+";",
-          downstyle: "border:1px solid "+scc.ISCButtonBorderDown+";background-color:"+scc.ISCButtonDownBackground+";"}, 
+          downstyle: "border:1px solid "+scc.ISCButtonBorderDown+";background-color:"+scc.ISCButtonDownBackground+";"},
          {MouseDown: SocialCalc.DoButtonCmd, command: spreadsheet.Buttons[button].command});
       }
 
@@ -1071,7 +1071,7 @@ spreadsheet.Buttons = {
    spreadsheet.formulabarDiv.innerHTML = '<input type="text" size="60" value="">&nbsp;'; //'<textarea rows="4" cols="60" style="z-index:5;background-color:white;position:relative;"></textarea>&nbsp;';
    spreadsheet.spreadsheetDiv.appendChild(spreadsheet.formulabarDiv);
    var inputbox = new SocialCalc.InputBox(spreadsheet.formulabarDiv.firstChild, spreadsheet.editor);
-   
+
    for (button in spreadsheet.formulabuttons) {
       bele = document.createElement("img");
       bele.id = spreadsheet.idPrefix+button;
@@ -1083,7 +1083,7 @@ spreadsheet.Buttons = {
       SocialCalc.ButtonRegister(spreadsheet.editor, bele,
          {normalstyle: "border:1px solid #FFF;backgroundColor:#FFF;",
           hoverstyle: "border:1px solid #CCC;backgroundColor:#FFF;",
-          downstyle: "border:1px solid #000;backgroundColor:#FFF;"}, 
+          downstyle: "border:1px solid #000;backgroundColor:#FFF;"},
          {MouseDown: spreadsheet.formulabuttons[button].command, Disabled: function() {return spreadsheet.editor.ECellReadonly();}});
    spreadsheet.formulabarDiv.appendChild(bele);
    }
@@ -1104,10 +1104,10 @@ spreadsheet.Buttons = {
       SocialCalc.ButtonRegister(spreadsheet.editor, bele,
          {normalstyle: "border:1px solid #FFF;backgroundColor:#FFF;",
           hoverstyle: "border:1px solid #CCC;backgroundColor:#FFF;",
-          downstyle: "border:1px solid #000;backgroundColor:#FFF;"}, 
+          downstyle: "border:1px solid #000;backgroundColor:#FFF;"},
          {MouseDown: spreadsheet.findbuttons[button].command, Disabled: function() {return false;}});
       searchBar[0].appendChild(bele);
-   } 
+   }
    input.on('input', SocialCalc.SpreadsheetControl.FindInSheet);
    input.on('focus', function() {
         SocialCalc.Keyboard.passThru = true;
@@ -1126,7 +1126,7 @@ spreadsheet.Buttons = {
         }
    });
    spreadsheet.formulabarDiv.appendChild(searchBar[0]);
-   
+
    // initialize tabs that need it
 
    for (i=0; i<tabs.length; i++) { // execute any tab-specific initialization code
@@ -1143,10 +1143,10 @@ spreadsheet.Buttons = {
    spreadsheet.viewheight = spreadsheet.height-spreadsheet.nonviewheight;
    spreadsheet.editorDiv=spreadsheet.editor.CreateTableEditor(spreadsheet.width, spreadsheet.viewheight);
 
-// eddy test add input 
+// eddy test add input
    var appViewDiv = document.createElement("div");
    appViewDiv.id = "te_appView";
-   
+
    appViewDiv.appendChild(spreadsheet.editorDiv)
    spreadsheet.editorDiv = appViewDiv;
 
@@ -1155,12 +1155,12 @@ spreadsheet.Buttons = {
    //formDataDiv.style.visibility = "hidden";
    formDataDiv.style.display = "none";
    //formDataDiv.style.display = "inline";
-   
-  // spreadsheet.spreadsheetDiv.appendChild(formDataDiv);   
+
+  // spreadsheet.spreadsheetDiv.appendChild(formDataDiv);
    spreadsheet.editorDiv.appendChild(formDataDiv);
-       
+
 // }
-      
+
    spreadsheet.spreadsheetDiv.appendChild(spreadsheet.editorDiv);
 
 // form data sheet - all input formulas set values in this sheet as well as the loaded sheet
@@ -1168,7 +1168,7 @@ spreadsheet.Buttons = {
    spreadsheet.formDataViewer.InitializeSpreadsheetViewer(formDataDiv.id, 180, 0, 200);
    spreadsheet.formDataViewer.editor.ignoreRender = true; // formDataViewer is used for ExecuteSheetCommand only - no need to render
 // end
-   
+
    for (vname in views) {
       html = views[vname].html;
       for (style in views[vname].replacements) {
@@ -1235,7 +1235,7 @@ SocialCalc.CalculateSheetNonViewHeight = function(spreadsheet) {
     if(spreadsheet.spreadsheetDiv.childNodes[nodeIndex].id == "SocialCalc-statusline") continue;
     spreadsheet.nonviewheight += spreadsheet.spreadsheetDiv.childNodes[nodeIndex].offsetHeight;
   }
-  
+
 }
 
 // }
@@ -1309,8 +1309,8 @@ SocialCalc.LocalizeSubstrings = function(str) {
 
 SocialCalc.GetSpreadsheetControlObject = function() {
 
-  // if in viewer mode return CurrentSpreadsheetViewerObject because CurrentSpreadsheetControlObject is null (bug fix) 
-   var csco = (SocialCalc.CurrentSpreadsheetControlObject != null) 
+  // if in viewer mode return CurrentSpreadsheetViewerObject because CurrentSpreadsheetControlObject is null (bug fix)
+   var csco = (SocialCalc.CurrentSpreadsheetControlObject != null)
    ? SocialCalc.CurrentSpreadsheetControlObject : SocialCalc.CurrentSpreadsheetViewerObject;
    if (csco) return csco;
 
@@ -1717,7 +1717,7 @@ SocialCalc.DoCmd = function(obj, which) {
          else {
             var val = lele.options[lele.selectedIndex].value;
             if (val == 'all') {
-                var cells = spreadsheet.sheet.cells; 
+                var cells = spreadsheet.sheet.cells;
                 var min_col = -1, max_col = -1, min_row = -1, max_row = -1;
                 for (var cell_id in cells) {
                     var cr = SocialCalc.coordToCr(cell_id);
@@ -1733,10 +1733,10 @@ SocialCalc.DoCmd = function(obj, which) {
                     if (max_col == -1 || cr.col > max_col) {
                         max_col = cr.col;
                     }
-                } 
-                spreadsheet.sortrange = SocialCalc.crToCoord(min_col, min_row) + ":" + SocialCalc.crToCoord(max_col, max_row); 
+                }
+                spreadsheet.sortrange = SocialCalc.crToCoord(min_col, min_row) + ":" + SocialCalc.crToCoord(max_col, max_row);
                 lele.options[lele.selectedIndex].text += " (" + spreadsheet.sortrange + ")";
-            } else { 
+            } else {
                 spreadsheet.sortrange = lele.options[lele.selectedIndex].value;
             }
          }
@@ -1745,7 +1745,7 @@ SocialCalc.DoCmd = function(obj, which) {
          ele.style.visibility = "visible";
          SocialCalc.LoadColumnChoosers(spreadsheet);
          if (obj && obj.blur) obj.blur();
-         SocialCalc.KeyboardFocus();   
+         SocialCalc.KeyboardFocus();
          return;
 
       case "dosort":
@@ -1856,7 +1856,7 @@ SocialCalc.DoCmd = function(obj, which) {
       }
 
    if (obj && obj.blur) obj.blur();
-   SocialCalc.KeyboardFocus();   
+   SocialCalc.KeyboardFocus();
 
    }
 
@@ -2125,10 +2125,10 @@ SocialCalc.SpreadsheetControlCreateSheetHTML = function(spreadsheet) {
    div = document.createElement("div");
    ele = context.RenderSheet(null, {type: "html"});
    div.appendChild(ele);
-   delete context;
+   context = undefined;
    result = div.innerHTML;
-   delete ele;
-   delete div;
+   ele = undefined;
+   div = undefined;
    return result;
 
    }
@@ -2272,7 +2272,7 @@ SocialCalc.SpreadsheetControl.DoFunctionList = function() {
    main.innerHTML = str;
 
    SocialCalc.DragRegister(main.firstChild.firstChild.firstChild.firstChild, true, true,
-                 {MouseDown: SocialCalc.DragFunctionStart, 
+                 {MouseDown: SocialCalc.DragFunctionStart,
                   MouseMove: SocialCalc.DragFunctionPosition,
                   MouseUp: SocialCalc.DragFunctionPosition,
                   Disabled: null, positionobj: main},
@@ -2318,7 +2318,7 @@ SocialCalc.SpreadsheetControl.FillFunctionNames = function(cname, ele) {
    }
 
 SocialCalc.SpreadsheetControl.GetFunctionInfoStr = function(fname) {
-   
+
    var scf = SocialCalc.Formula;
    var f = scf.FunctionList[fname];
    var scsc = SocialCalc.special_chars;
@@ -2456,8 +2456,8 @@ SocialCalc.SpreadsheetControl.DoMultiline = function() {
       '<td style="font-size:10px;cursor:default;color:#666;" onclick="SocialCalc.SpreadsheetControl.HideMultiline();">&nbsp;X&nbsp;</td></tr></table>'+
       '<div style="background-color:#DDD;">'+str+'</div>';
 
-   SocialCalc.DragRegister(main.firstChild.firstChild.firstChild.firstChild, true, true, 
-                 {MouseDown: SocialCalc.DragFunctionStart, 
+   SocialCalc.DragRegister(main.firstChild.firstChild.firstChild.firstChild, true, true,
+                 {MouseDown: SocialCalc.DragFunctionStart,
                   MouseMove: SocialCalc.DragFunctionPosition,
                   MouseUp: SocialCalc.DragFunctionPosition,
                   Disabled: null, positionobj: main},
@@ -2643,8 +2643,8 @@ SocialCalc.SpreadsheetControl.DoLink = function() {
       '<td style="font-size:10px;cursor:default;color:#666;" onclick="SocialCalc.SpreadsheetControl.HideLink();">&nbsp;X&nbsp;</td></tr></table>'+
       '<div style="background-color:#DDD;">'+str+'</div>';
 
-   SocialCalc.DragRegister(main.firstChild.firstChild.firstChild.firstChild, true, true, 
-                 {MouseDown: SocialCalc.DragFunctionStart, 
+   SocialCalc.DragRegister(main.firstChild.firstChild.firstChild.firstChild, true, true,
+                 {MouseDown: SocialCalc.DragFunctionStart,
                   MouseMove: SocialCalc.DragFunctionPosition,
                   MouseUp: SocialCalc.DragFunctionPosition,
                   Disabled: null, positionobj: main},
@@ -2838,18 +2838,18 @@ SocialCalc.SpreadsheetControl.FindInSheet = function() {
         }
         if (cellvalue !== undefined && cellvalue.match(regex)) {
            search_cells.push(cell_id);
-        } 
+        }
     }
     spreadsheet.sheet.search_cells = search_cells;
     if (search_cells.length) {
         spreadsheet.sheet.selected_search_cell = 0;
         spreadsheet.editor.MoveECell(search_cells[0]);
-        searchstatus.text("1 of " + search_cells.length); 
+        searchstatus.text("1 of " + search_cells.length);
     } else {
         spreadsheet.sheet.selected_search_cell = undefined;
         searchstatus.text("No Matches");
     }
-        
+
 }
 
 SocialCalc.SpreadsheetControl.SearchSheet = function(direction) {
@@ -2866,13 +2866,13 @@ SocialCalc.SpreadsheetControl.SearchSheet = function(direction) {
         selected_cell += (direction === 0 ? -1 : 1);
     }
     var new_cell = cells[selected_cell];
-    sheet.selected_search_cell = selected_cell; 
+    sheet.selected_search_cell = selected_cell;
     spreadsheet.editor.MoveECell(new_cell);
     document.getElementById("searchstatus").textContent = String(selected_cell+1) + " of " + cells.length;
 }
- 
+
 SocialCalc.SpreadsheetControl.SearchUp = function() {
-    SocialCalc.SpreadsheetControl.SearchSheet(0);    
+    SocialCalc.SpreadsheetControl.SearchSheet(0);
 }
 
 SocialCalc.SpreadsheetControl.SearchDown = function() {
@@ -3538,7 +3538,7 @@ SocialCalc.SettingsControls.PopupChangeCallback = function(attribs, id, value) {
    if (str2 != "??-???-??&nbsp;??:??:??") { // not bad date from negative number
       str1 += "<br>"+str2;
       }
-      
+
    ele.childNodes[1].innerHTML = str1;
 
    }
@@ -3623,8 +3623,8 @@ SocialCalc.SettingsControls.PopupListInitialize = function(panelobj, ctrlname) {
       }
 
    SocialCalc.Popup.Create("List", panelobj[ctrlname].id, {});
-   SocialCalc.Popup.Initialize(panelobj[ctrlname].id, 
-      {options: options, 
+   SocialCalc.Popup.Initialize(panelobj[ctrlname].id,
+      {options: options,
        attribs:{changedcallback: SocialCalc.SettingsControls.PopupChangeCallback, panelobj: panelobj}});
 
    }
