@@ -1,4 +1,4 @@
-if('undefined' === typeof document || typeof document.getElementById !== 'function') {
+if('undefined' === typeof document) {
     // We don't really need a DOM-based presentation layer on the server
     SocialCalc.GetEditorCellElement = function () {};
     SocialCalc.ReplaceCell = function () {};
