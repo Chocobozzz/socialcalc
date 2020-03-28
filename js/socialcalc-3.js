@@ -4592,6 +4592,7 @@ SocialCalc.CalculateCellSkipData = function(context) {
    context.cellskip = {}; // reset
 
    // Calculate cellskip data
+   if (sheetobj.attribs.lastrow > 10000) return;
 
    for (row=1; row<=sheetobj.attribs.lastrow; row++) {
       for (col=1; col<=sheetobj.attribs.lastcol; col++) { // look for spans and set cellskip for skipped cells
