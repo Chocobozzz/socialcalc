@@ -5795,8 +5795,14 @@ SocialCalc.format_text_for_display = function(rawvalue, valuetype, valueformat, 
       if (!valuesubtype) valueformat="text-plain";
       }
    if (valueformat=="text-html") { // HTML - output as it as is
-      ;
-      }
+      const parsed = new DOMParser().parseFromString(displayvalue, "text/html");
+      parsed.body.querySelectorAll("*").forEach(elem => [ ...elem.attributes ].forEach(attr => {
+          if ([ "href", "alt", "title", "src" ].includes(attr.name) !== true) {
+              return elem.removeAttribute(attr.name);
+          }
+      }));
+      displayvalue = parsed.body.innerHTML;
+   }
    else if (SocialCalc.Callbacks.expand_wiki && /^text-wiki/.test(valueformat)) { // do general wiki markup
       displayvalue = SocialCalc.Callbacks.expand_wiki(displayvalue, sheetobj, linkstyle, valueformat);
       }
