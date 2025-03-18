@@ -3260,7 +3260,8 @@ SocialCalc.ExecuteSheetCommand = function(sheet, cmd, saveundo) {
            if (saveundo) changes.AddUndo('pane col ' + undoNum);
 
            // Handle hidden column.
-           while (editor.context.sheetobj.colattribs.hide[SocialCalc.rcColname(col)] == 'yes') {
+           // 702 is maximum of columns (ZZ)
+           while (editor.context.sheetobj.colattribs.hide[SocialCalc.rcColname(col)] == 'yes' && col < 702) {
              col++;
            }
 
