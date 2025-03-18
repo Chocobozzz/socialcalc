@@ -936,7 +936,7 @@ SocialCalc.EditorSheetStatusCallback = function(recalcdata, status, arg, editor)
          if (sheetobj.hiddencolrow == "col") {
             if (editor.ecell !== null) {
                var col = editor.ecell.col;
-               while (sheetobj.colattribs.hide[SocialCalc.rcColname(col)] == "yes") {
+               while (sheetobj.colattribs.hide[SocialCalc.rcColname(col)] == "yes" && col < 702) {
                   col++;
                   }
                var coord = SocialCalc.crToCoord(col, editor.ecell.row);
@@ -2716,7 +2716,7 @@ SocialCalc.MoveECellWithKey = function(editor, ch) {
    if (editor.context.sheetobj.attribs.usermaxrow) row = Math.min(editor.context.sheetobj.attribs.usermaxrow, row);
 
    // Handle hidden column.
-   while (editor.context.sheetobj.colattribs.hide[SocialCalc.rcColname(col)] == "yes") {
+   while (editor.context.sheetobj.colattribs.hide[SocialCalc.rcColname(col)] == "yes" && col < 702) {
       col += delta;
       if (col < 1) {
          delta = -delta;
@@ -2897,7 +2897,7 @@ SocialCalc.SetECellHeaders = function(editor, selected) {
    if (!ecell) return;
 
    // Handle ecell on a hidden column/row.
-   while (context.sheetobj.colattribs.hide[SocialCalc.rcColname(ecell.col)] == "yes") {
+   while (context.sheetobj.colattribs.hide[SocialCalc.rcColname(ecell.col)] == "yes" && ecell.col < 702) {
       ecell.col++;
       }
    while (context.sheetobj.rowattribs.hide[ecell.row] == "yes") {
@@ -3243,7 +3243,7 @@ SocialCalc.FitToEditTable = function(editor) {
          }
       }
 
-   for (colnum=context.colpanes[colpane].first; colnum<=10000; colnum++) { //!!! max for safety, but makes that col max!!!
+   for (colnum=context.colpanes[colpane].first; colnum<=702; colnum++) { // Max columns is 702
       colname=SocialCalc.rcColname(colnum);
       if (sheetobj.colattribs.hide[colname] != "yes") {
          colwidth = sheetobj.colattribs.width[colname] || sheetobj.attribs.defaultcolwidth || SocialCalc.Constants.defaultColWidth;
@@ -3327,7 +3327,7 @@ SocialCalc.CalculateEditorPositions = function(editor) {
    editor.lastnonscrollingrow = editor.context.rowpanes.length-1 > 0 ?
          editor.context.rowpanes[editor.context.rowpanes.length-2].last : 0;
    editor.firstscrollingcol = editor.context.colpanes[editor.context.colpanes.length-1].first;
-   while (editor.context.sheetobj.colattribs.hide[SocialCalc.rcColname(editor.firstscrollingcol)] == "yes") {
+   while (editor.context.sheetobj.colattribs.hide[SocialCalc.rcColname(editor.firstscrollingcol)] == "yes" && editor.firstscrollingcol < 702) {
       editor.firstscrollingcol++;
       }
    editor.firstscrollingcolleft = editor.colpositions[editor.firstscrollingcol] || editor.headposition.left;
@@ -3533,7 +3533,7 @@ SocialCalc.ScrollRelativeBoth = function(editor, vamount, hamount) {
       }
 
    // Handle hidden column by finding a next one that's not hidden.
-   while (context.sheetobj.colattribs.hide[SocialCalc.rcColname(context.colpanes[hplen-1].first+hamount)] == "yes") {
+   while (context.sheetobj.colattribs.hide[SocialCalc.rcColname(context.colpanes[hplen-1].first+hamount)] == "yes" && context.colpanes[hplen-1].first+hamount < 702) {
       hamount += dh;
       if (hamount < 1) {
          hamount = 0;
@@ -4232,7 +4232,7 @@ SocialCalc.ShowCellHandles = function(cellhandles, show, moveshow) {
       if (col < editor.firstscrollingcol) break;
 
       // Go beyond one column if hidden.
-      while (editor.context.sheetobj.colattribs.hide[SocialCalc.rcColname(col+colinc)] == "yes") {
+      while (editor.context.sheetobj.colattribs.hide[SocialCalc.rcColname(col+colinc)] == "yes" && col+colinc < 702) {
          colinc++;
          }
 
@@ -5383,7 +5383,7 @@ SocialCalc.TCPSDragFunctionMove = function(event, draginfo, dobj) {
       col = SocialCalc.Lookup(draginfo.clientX+sliderthickness, editor.colpositions);
 
       // Handle hidden column.
-      while (editor.context.sheetobj.colattribs.hide[SocialCalc.rcColname(col)] == "yes") {
+      while (editor.context.sheetobj.colattribs.hide[SocialCalc.rcColname(col)] == "yes" && col < 702) {
          col++;
          }
 
@@ -5432,7 +5432,7 @@ SocialCalc.TCPSDragFunctionStop = function(event, draginfo, dobj) {
      if (col>editor.context.sheetobj.attribs.lastcol) col=editor.context.sheetobj.attribs.lastcol; // can't extend sheet here
 
      // Handle hidden column.
-     while (editor.context.sheetobj.colattribs.hide[SocialCalc.rcColname(col)] == "yes") {
+     while (editor.context.sheetobj.colattribs.hide[SocialCalc.rcColname(col)] == "yes" && col < 702) {
        col++;
      }
 
