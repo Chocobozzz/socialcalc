@@ -37,6 +37,7 @@
     "gulp-jshint": "^2.0.4",
     "gulp-uglify": "^3.0.0",
     "jshint": "^2.9.5",
-    "jshint-stylish": "^2.2.1"
+    "jshint-stylish": "^2.2.1",
+    "sanitize-html": "^2.15.0"
   }
 }

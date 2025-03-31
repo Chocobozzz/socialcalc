@@ -9,6 +9,8 @@ var css_folder = './css/';
 var dist_folder = './dist/';
 
 var js_top_file = js_folder + 'module-wrapper-top.js';
+// echo "const { JSDOM } = require('jsdom'); window.JSDOM = JSDOM;" | esbuild --bundle --outfile=js/jsdom.js
+var sanitize_dist = js_folder + 'sanitize-dist.js';
 var js_bottom_file = js_folder + 'module-wrapper-bottom.js';
 
 var js_files = [
@@ -42,7 +44,7 @@ gulp.task('validate-js', function () {
 });
 
 gulp.task('js', function () {
-    var files = filesExist([].concat(js_top_file, js_files, js_bottom_file));
+    var files = filesExist([].concat(js_top_file, sanitize_dist, js_files, js_bottom_file));
     return gulp.src(files)
         .pipe(concat('SocialCalc.js'))
         .pipe(gulp.dest(dist_folder));
